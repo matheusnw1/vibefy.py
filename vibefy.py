@@ -17,8 +17,12 @@ def exibir_musicas(musicas):
         i += 1
         print(f'Musica {i}: {musica}')
 
+def pedir_artista():
+    artista = input('Qual artista você gostaria de ouvir?: ')
+    return artista
 
-musicas = buscar_musicas('brunomars')
+artista = pedir_artista()
+musicas = buscar_musicas(artista)
 exibir_musicas(musicas)
 
 
