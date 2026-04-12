@@ -18,7 +18,7 @@ def exibir_musicas(musicas):
         print(f'Musica {i}: {musica}')
 
 def pedir_artista():
-    artista = input('Qual artista você gostaria de ouvir?: ')
+    artista = input('Como você está se sentindo?: ')
     return artista
 
 artista = pedir_artista()
