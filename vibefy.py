@@ -3,6 +3,7 @@ import requests
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
+import webbrowser
 
 load_dotenv()
 chave = os.getenv('OPENROUTER_API_KEY')
@@ -45,8 +46,13 @@ def pedir_humor():
     humor = input('Como você está se sentindo?: ')
     return humor
 
+def abrir_musica(nome_musica):
+    musica = f'https://www.youtube.com/results?search_query={nome_musica}'
+    webbrowser.open(musica)
+
+
 
 humor = pedir_humor()
 artista = interpretar_humor(humor)
 musicas = buscar_musicas(artista)
-exibir_musicas(musicas)
+nome_musica = abrir_musica(musicas[0])
