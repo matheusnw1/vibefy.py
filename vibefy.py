@@ -13,9 +13,9 @@ client = OpenAI(
 )
 
 
-def buscar_musicas(artista):
+def buscar_musicas(musica):
     lista = []
-    musica = requests.get(f'https://itunes.apple.com/search?term={artista}&media=music&limit=5')
+    musica = requests.get(f'https://itunes.apple.com/search?term={musica}&media=music&limit=5')
     dicionario = (musica.json())
     musicas = (dicionario['results'])
     for musica in musicas:
@@ -35,7 +35,7 @@ def interpretar_humor(humor):
     resposta = client.chat.completions.create(
         model="arcee-ai/trinity-large-preview:free",
         messages=[
-            {"role": "user", "content": f'O usuário está se sentindo assim: {humor}. Me retorne apenas o nome de um artista musical que combina com esse sentimento, sem explicação, só o nome.'}
+            {"role": "user", "content": f'O usuário está se sentindo assim: {humor}. Me retorne apenas o nome de um artista musical e uma música que combina com esse sentimento no formato Artista - Música, sem explicação, só o nome.'}
         ]
     )
     artista = resposta.choices[0].message.content
@@ -53,6 +53,6 @@ def abrir_musica(nome_musica):
 
 
 humor = pedir_humor()
-artista = interpretar_humor(humor)
-musicas = buscar_musicas(artista)
-nome_musica = abrir_musica(musicas[0])
+musica = interpretar_humor(humor)
+nome_musica = abrir_musica(musica)
+print(nome_musica)
