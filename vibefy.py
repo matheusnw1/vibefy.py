@@ -33,7 +33,7 @@ def exibir_musicas(musicas):
 
 def interpretar_humor(humor):
     resposta = client.chat.completions.create(
-        model="arcee-ai/trinity-large-preview:free",
+        model="nvidia/nemotron-3-super-120b-a12b:free",
         messages=[
             {"role": "user", "content": f'O usuário está se sentindo assim: {humor}. Me retorne apenas o nome de um artista musical e uma música que combina com esse sentimento no formato Artista - Música, sem explicação, só o nome.'}
         ]
@@ -55,4 +55,4 @@ def abrir_musica(nome_musica):
 humor = pedir_humor()
 musica = interpretar_humor(humor)
 nome_musica = abrir_musica(musica)
-print(nome_musica)
+
