@@ -31,11 +31,11 @@ def exibir_musicas(musicas):
         print(f'Musica {i}: {musica}')
 
 
-def interpretar_humor(humor):
+def interpretar_humor(humor, gostos):
     resposta = client.chat.completions.create(
         model="nvidia/nemotron-3-super-120b-a12b:free",
         messages=[
-            {"role": "user", "content": f'O usuário está se sentindo assim: {humor}. Me retorne apenas o nome de um artista musical e uma música que combina com esse sentimento no formato Artista - Música, sem explicação, só o nome.'}
+            {"role": "user", "content": f'O usuário está se sentindo assim: {humor} e ele gosta dessas músicas: {gostos}. Me retorne apenas o nome de um artista musical e uma música com base no humor e gosto dessa pessoa no formato Artista - Música, sem explicação, só o nome.'}
         ]
     )
     artista = resposta.choices[0].message.content
@@ -50,9 +50,21 @@ def abrir_musica(nome_musica):
     musica = f'https://www.youtube.com/results?search_query={nome_musica}'
     webbrowser.open(musica)
 
+def pedir_musicas():
+    gostos = []
+    i = 0
+    while i < 3:
+        musicas = input('Digite até 3 músicas que você gosta: ')
+        if musicas == '':
+            break
+        i+= 1
+        gostos.append(musicas)
+    return gostos
 
 
 humor = pedir_humor()
-musica = interpretar_humor(humor)
+gostos = pedir_musicas()
+musica = interpretar_humor(humor, gostos)
 nome_musica = abrir_musica(musica)
+
 
