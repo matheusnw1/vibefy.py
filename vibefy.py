@@ -20,7 +20,9 @@ def buscar_musicas(musica):
     musicas = (dicionario['results'])
     for musica in musicas:
         music = (f'{musica['trackName']}')
-        lista.append(music)
+        art = (f'{musica['artworkUrl100']}')
+        preview = (f'{musica['previewUrl']}')
+        lista.append((music, art, preview))
     return lista
 
 
@@ -33,13 +35,13 @@ def exibir_musicas(musicas):
 
 def interpretar_humor(humor, gostos):
     resposta = client.chat.completions.create(
-        model="nvidia/nemotron-3-super-120b-a12b:free",
+        model="openai/gpt-oss-20b:free",
         messages=[
             {"role": "user", "content": f'O usuário está se sentindo assim: {humor} e ele gosta dessas músicas: {gostos}. Me retorne apenas o nome de um artista musical e uma música com base no humor e gosto dessa pessoa no formato Artista - Música, sem explicação, só o nome.'}
         ]
     )
     artista = resposta.choices[0].message.content
-    return artista
+    return artista.strip('.')
 
 
 def pedir_humor():
@@ -65,6 +67,7 @@ def pedir_musicas():
 humor = pedir_humor()
 gostos = pedir_musicas()
 musica = interpretar_humor(humor, gostos)
-nome_musica = abrir_musica(musica)
-
-
+nome_musica = abrir_musica(musica)  
+resultados = buscar_musicas(musica)
+nome, capa, preview = resultados[0]
+print(nome, capa, preview)
