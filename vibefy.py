@@ -63,11 +63,12 @@ def pedir_musicas():
         gostos.append(musicas)
     return gostos
 
-
-humor = pedir_humor()
-gostos = pedir_musicas()
-musica = interpretar_humor(humor, gostos)
-nome_musica = abrir_musica(musica)  
-resultados = buscar_musicas(musica)
-nome, capa, preview = resultados[0]
-print(nome, capa, preview)
+if __name__ == '__main__':
+    humor = pedir_humor()
+    gostos = pedir_musicas()
+    musica = interpretar_humor(humor, gostos)
+    nome_musica = abrir_musica(musica)  
+    resultados = buscar_musicas(musica)
+    nome, capa, preview = resultados[0]
+    print(nome, capa, preview)
+    

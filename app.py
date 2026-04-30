@@ -1,6 +1,6 @@
 
-from flask import Flask, render_template, jsonify
-import requests
+from flask import Flask, render_template, jsonify, request
+from vibefy import interpretar_humor, buscar_musicas
 
 app = Flask(__name__)
 
@@ -10,7 +10,12 @@ def inicio():
 
 @app.route('/buscar', methods=['POST'])
 def buscar():
-    dados = requests.json
-    return jsonify({'resultado': 'ok'})
+    dados = request.json
+    humor = dados['humor']
+    gostos = dados['gostos']
+    musica = interpretar_humor(humor, gostos)
+    resultado = buscar_musicas(musica)
+    nome, capa, preview = resultado[0]
+    return jsonify({'nome': nome, 'capa': capa, 'preview': preview})
 
 app.run()
