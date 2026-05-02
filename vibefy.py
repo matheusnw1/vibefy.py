@@ -35,12 +35,14 @@ def exibir_musicas(musicas):
 
 def interpretar_humor(humor, gostos):
     resposta = client.chat.completions.create(
-        model="openai/gpt-oss-20b:free",
+        model="openai/gpt-oss-120b:free",
         messages=[
             {"role": "user", "content": f'O usuário está se sentindo assim: {humor} e ele gosta dessas músicas: {gostos}. Me retorne apenas o nome de um artista musical e uma música com base no humor e gosto dessa pessoa no formato Artista - Música, sem explicação, só o nome.'}
         ]
     )
     artista = resposta.choices[0].message.content
+    if not artista:
+        return "Unknown Artist"
     return artista.strip('.')
 
 

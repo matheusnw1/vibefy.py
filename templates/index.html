@@ -13,7 +13,7 @@
     <input type="text" id="t1" placeholder="Música 1">
     <input type="text" id="t2" placeholder="Música 2">
     <input type="text" id="t3" placeholder="Música 3">
-    <button>Buscar</button>
+    <button id="btn-buscar" onclick="buscar()">Buscar</button>
   </div>
 
   <div class="resultado" id="resultado">
@@ -21,5 +21,30 @@
     <p id="nome"></p>
     <audio src="" id="audio" controls></audio>
   </div>
+
+  <script>
+    function buscar() {
+      let humor = document.getElementById('humor').value
+
+      let musica1 = document.getElementById('t1').value
+      let musica2 = document.getElementById('t2').value
+      let musica3 = document.getElementById('t3').value
+
+      let gostos = [musica1, musica2, musica3].filter(m => m !== '')
+
+      fetch('/buscar', {
+        method:'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({humor: humor, gostos: gostos})
+      })
+      .then(res => res.json())
+      .then(data => { 
+          document.getElementById('capa').src = data.capa
+          document.getElementById('nome').textContent = data.nome
+          document.getElementById('audio').src = data.preview
+    })
+    }
+
+  </script>
 </body>
 </html>

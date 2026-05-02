@@ -14,7 +14,9 @@ def buscar():
     humor = dados['humor']
     gostos = dados['gostos']
     musica = interpretar_humor(humor, gostos)
+    print("IA retornou:", musica)
     resultado = buscar_musicas(musica)
+    print("iTunes retornou:", resultado)
     nome, capa, preview = resultado[0]
     return jsonify({'nome': nome, 'capa': capa, 'preview': preview})
 
