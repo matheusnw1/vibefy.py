@@ -7,23 +7,35 @@
   <title>Vibefy</title>
 </head>
 <body>
-  <div class="titulo">
-    <h1>Vibefy</h1>
-    <p>Descreva seu momento. A IA encontra a trilha perfeita.</p>
-    <input type="text" id="humor" placeholder="Como você se sente?">
-    <input type="text" id="t1" placeholder="Música 1">
-    <input type="text" id="t2" placeholder="Música 2">
-    <input type="text" id="t3" placeholder="Música 3">
-    <button id="btn-buscar" onclick="buscar()">Buscar</button>
-  </div>
+<body>
+  <div class="header">
+    <div class="titulo">VIBEFY</div>
 
-  <div class="resultado" id="resultado">
-    <img src="" alt="" id="capa">
-    <p id="nome"></p>
-    <audio src="" id="audio" controls></audio>
-  </div>
+    <h1>let the <em>music</em><br>find you.</h1>
+    <p class="subtitulo">Descreva seu momento. A IA encontra a trilha perfeita.</p>
 
+    <div class="form">
+      <div class="label">COMO VOCÊ ESTÁ SE SENTINDO?</div>
+      <input type="text" id="humor" placeholder="Ex: cansado mas querendo relaxar sem dormir...">
+
+      <div class="label">MÚSICAS QUE VOCÊ GOSTA (OPCIONAL — ATÉ 3)</div>
+      <div class="musicas">
+        <input type="text" id="t1" placeholder="Música 1">
+        <input type="text" id="t2" placeholder="Música 2">
+        <input type="text" id="t3" placeholder="Música 3">
+      </div>
+
+      <button id="btn-buscar" onclick="buscar()">Encontrar minha música →</button>
+    </div>
+
+    <div class="resultado" id="resultado">
+      <img src="" alt="" id="capa">
+      <p id="nome"></p>
+      <audio src="" id="audio" controls></audio>
+    </div>
+  </div>
   <script>
+
     function buscar() {
       let humor = document.getElementById('humor').value
 
@@ -45,7 +57,6 @@
           document.getElementById('audio').src = data.preview
     })
     }
-
   </script>
 </body>
 </html>
