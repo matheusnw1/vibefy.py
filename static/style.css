@@ -94,24 +94,46 @@ button:hover {
     background-color: #1e3b8a88;
 }
 
-audio {
+/* audio {
     display: none;
+} */
+
+.resultado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
 }
 
 .player {
-    background-color: #1a1a1c;
-    border-radius: 20px;
-    margin-top: 35px;
-    padding: 25px;
-    display: row;
-    align-items: center;
+  background-color: #1a1a1c;
+  border-radius: 20px;
+  padding: 30px;
+  width: 600px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.player p {
-    color: #e8e4dc;
+#capa {
+  width: 250px;
+  height: 250px;
+  border-radius: 20px;
+  margin-bottom: 20px;
 }
-/* 
-.player image {
-    disl
-    align-items: center;
-} */
+
+.player-info p {
+  color: #e8e4dc;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.player button {
+  padding: 15px;
+  border-radius: 10px;
+  width: 300px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
