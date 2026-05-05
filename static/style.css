@@ -11,11 +11,18 @@ body {
     font-family: sans-serif;
 }
 
-.titulo {
-    max-width: 600px;
+.header {
+    max-width: 700px;
     margin: 0 auto;
-    padding: 60px 40px;
+    padding: 160px 40px;
 
+}
+
+.titulo {
+    color: #e8e4dc;
+    letter-spacing: 2px;
+    font-weight: 600;
+    
 }
 
 h1 {
@@ -24,21 +31,41 @@ h1 {
     margin-bottom: 4px;
 }
 
+em {
+    color: #1a3a6b;
+}
+
 p {
-    font-size: 20px;
-    color: gray;
-    margin-bottom: 6px;
+    font-size: 18px;
+    color: #888;
+    margin-bottom: 25px;
+    letter-spacing: 1.5px;
+}
+
+.musicas {
+    display:flex;
+    flex-direction: row;
+    gap: 15px;
 }
 
 input {
-    border: 2px solid gray;
-    border-radius: 15px;
-    margin-bottom: 10px;
+    border: 2px solid #4d4d4d;
+    border-radius: 10px;
+    margin-bottom: 15px;
     padding: 15px;
     width: 100%;
     background: #1a1a1c;
     color: #e8e4dc;
 }
+
+.label {
+    color: #888;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
 
 ::placeholder {
     color: #888;
@@ -46,13 +73,13 @@ input {
 
 input:focus {
     outline: none;
-    border-color: #ffffff;
+    border-color: #1a3a6b;
 }
 
 button {
-    background-color: #534ab7;
+    background-color: #1a3a6b;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 3px;
     padding: 15px;
     border: none;
@@ -63,5 +90,5 @@ button {
 }
 
 button:hover {
-    background-color: #999999;
+    background-color: #1e3b8a88;
 }
