@@ -7,7 +7,6 @@
   <title>Vibefy</title>
 </head>
 <body>
-<body>
   <div class="header">
     <div class="titulo">VIBEFY</div>
 
@@ -18,7 +17,7 @@
       <div class="label">COMO VOCÊ ESTÁ SE SENTINDO?</div>
       <input type="text" id="humor" placeholder="Ex: cansado mas querendo relaxar sem dormir...">
 
-      <div class="label">MÚSICAS QUE VOCÊ GOSTA (OPCIONAL — ATÉ 3)</div>
+      <div class="label">MÚSICAS QUE VOCÊ GOSTA (OPCIONAL - ATÉ 3)</div>
       <div class="musicas">
         <input type="text" id="t1" placeholder="Música 1">
         <input type="text" id="t2" placeholder="Música 2">
@@ -29,9 +28,14 @@
     </div>
 
     <div class="resultado" id="resultado">
-      <img src="" alt="" id="capa">
-      <p id="nome"></p>
-      <audio src="" id="audio" controls></audio>
+      <audio src="" id="audio"></audio>
+        <div class="player" id="player">
+          <img src="" alt="" id="capa">
+          <div class="player-info">
+            <p id="nome"></p>
+          </div>
+          <button onclick="togglePlay()">▶</button>
+        </div>
     </div>
   </div>
   <script>
@@ -52,6 +56,7 @@
       })
       .then(res => res.json())
       .then(data => { 
+          document.getElementById('resultado').style.display = 'block'
           document.getElementById('capa').src = data.capa
           document.getElementById('nome').textContent = data.nome
           document.getElementById('audio').src = data.preview
