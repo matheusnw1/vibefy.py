@@ -30,9 +30,12 @@
     <div class="resultado" id="resultado">
       <audio src="" id="audio"></audio>
         <div class="player" id="player">
-          <img src="" alt="" id="capa">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/95/f5/87/95f587f7-21c3-d5f9-d81a-4350f9caa020/16UMGIM27643.rgb.jpg/600x600bb.jpg" alt="" id="capa">
           <div class="player-info">
-            <p id="nome"></p>
+            <div class="player-info">
+              <p id="artista">Drake</p>
+              <p id="nome">One Dance</p>
+            </div>
           </div>
           <button onclick="togglePlay()">▶</button>
         </div>
@@ -58,7 +61,9 @@
       .then(data => { 
           document.getElementById('resultado').style.display = 'block'
           document.getElementById('capa').src = data.capa
-          document.getElementById('nome').textContent = data.nome
+          let partes = data.nome.split(' - ')
+          document.getElementById('artista').textContent = partes[0]
+          document.getElementById('nome').textContent = partes[1]
           document.getElementById('audio').src = data.preview
     })
     }
