@@ -32,41 +32,18 @@
         <div class="player" id="player">
           <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/95/f5/87/95f587f7-21c3-d5f9-d81a-4350f9caa020/16UMGIM27643.rgb.jpg/600x600bb.jpg" alt="" id="capa">
           <div class="player-info">
-            <div class="player-info">
               <p id="artista">Drake</p>
               <p id="nome">One Dance</p>
-            </div>
+              <div class="progresso">
+                <span id="tempo-atual">0:00</span>
+                <input type="range" id="barra-progresso" value="0" min="0" max="100">
+                <span id="tempo-total">0:30</span>
+              </div>
           </div>
-          <button onclick="togglePlay()">▶</button>
+          <button id="play" onclick="togglePlay()">▶</button>
         </div>
     </div>
   </div>
-  <script>
-
-    function buscar() {
-      let humor = document.getElementById('humor').value
-
-      let musica1 = document.getElementById('t1').value
-      let musica2 = document.getElementById('t2').value
-      let musica3 = document.getElementById('t3').value
-
-      let gostos = [musica1, musica2, musica3].filter(m => m !== '')
-
-      fetch('/buscar', {
-        method:'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({humor: humor, gostos: gostos})
-      })
-      .then(res => res.json())
-      .then(data => { 
-          document.getElementById('resultado').style.display = 'block'
-          document.getElementById('capa').src = data.capa
-          let partes = data.nome.split(' - ')
-          document.getElementById('artista').textContent = partes[0]
-          document.getElementById('nome').textContent = partes[1]
-          document.getElementById('audio').src = data.preview
-    })
-    }
-  </script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
