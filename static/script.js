@@ -78,3 +78,11 @@ audio.addEventListener('timeupdate', () => {
     barra.value = audio.currentTime;
     tempoAtual.textContent = formatarTempo(audio.currentTime);
 });
+
+const barraVolume = document.getElementById('barra-volume');
+
+audio.volume = barraVolume.value;
+barraVolume.addEventListener('input', () => {
+    audio.volume = barraVolume.value;
+    console.log("Volume atual:", audio.volume);
+});

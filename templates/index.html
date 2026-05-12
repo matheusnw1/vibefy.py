@@ -40,7 +40,14 @@
                 <span id="tempo-total"></span>
               </div>
           </div>
-          <button id="play" >▶</button>
+          <div class="controles">
+            <button id="play" onclick="togglePlay()">▶</button>
+            <div class="volume">
+              <span>–</span>
+              <input type="range" id="barra-volume" min="0" max="1" step="0.01" value="0.5">
+              <span>+</span>
+            </div>
+          </div>
         </div>
     </div>
   </div>
