@@ -40,3 +40,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+const barra = document.getElementById('barra-progresso');
+
+audio.addEventListener('loadedmetadata', () => {
+    barra.max = audio.duration;
+});
+
+audio.addEventListener('timeupdate', () => {
+    barra.value = audio.currentTime;
+});
+
+barra.addEventListener('input', () => {
+    audio.currentTime = barra.value;
+});
+
+const tempoAtual = document.getElementById('tempo-atual');
+const tempoTotal = document.getElementById('tempo-total');
+
+audio.addEventListener('loadedmetadata', () => {
+    barra.max = audio.duration;
+    tempoTotal.textContent = formatarTempo(audio.duration);
+});
+
+audio.addEventListener('timeupdate', () => {
+    barra.value = audio.currentTime;
+    tempoAtual.textContent = formatarTempo(audio.currentTime);
+});
+
+function formatarTempo(segundos) {
+    const min = Math.floor(segundos / 60);
+    const seg = Math.floor(segundos % 60);
+    return `${min}:${seg.toString().padStart(2, '0')}`;
+}
+
+audio.addEventListener('timeupdate', () => {
+    barra.value = audio.currentTime;
+    tempoAtual.textContent = formatarTempo(audio.currentTime);
+});
