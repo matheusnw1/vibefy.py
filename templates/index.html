@@ -7,50 +7,55 @@
   <title>Vibefy</title>
 </head>
 <body>
-  <div class="header">
+  <div class="header" id="header">
     <div class="titulo">VIBEFY</div>
-
     <h1>let the <em>music</em><br>find you.</h1>
     <p class="subtitulo">Descreva seu momento. A IA encontra a trilha perfeita.</p>
-
     <div class="form">
       <div class="label">COMO VOCÊ ESTÁ SE SENTINDO?</div>
       <input type="text" id="humor" placeholder="Ex: cansado mas querendo relaxar sem dormir...">
-
       <div class="label">MÚSICAS QUE VOCÊ GOSTA (OPCIONAL - ATÉ 3)</div>
       <div class="musicas">
         <input type="text" id="t1" placeholder="Música 1">
         <input type="text" id="t2" placeholder="Música 2">
         <input type="text" id="t3" placeholder="Música 3">
       </div>
-
       <button id="btn-buscar" onclick="buscar()">Encontrar minha música →</button>
     </div>
+  </div>
 
-    <div class="resultado" id="resultado">
-      <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" id="audio"></audio>
-        <div class="player" id="player">
-          <img src="https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/95/f5/87/95f587f7-21c3-d5f9-d81a-4350f9caa020/16UMGIM27643.rgb.jpg/600x600bb.jpg" alt="" id="capa">
-          <div class="player-info">
-              <p id="artista">Drake</p>
-              <p id="nome">One Dance</p>
-              <div class="progresso">
-                <span id="tempo-atual">0:00</span>
-                <input type="range" id="barra-progresso" value="0" min="0" max="100">
-                <span id="tempo-total"></span>
-              </div>
-          </div>
-          <div class="controles">
-            <button id="play" onclick="togglePlay()">▶</button>
-            <div class="volume">
-              <span>–</span>
-              <input type="range" id="barra-volume" min="0" max="1" step="0.01" value="0.5">
-              <span>+</span>
-            </div>
-          </div>
+  <div id="loading">
+    <!-- <div class="ondas-loading">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div> -->
+    <p>encontrando sua música...</p>
+  </div>
+
+  <audio src="" id="audio"></audio>
+  <canvas id="canvas-ondas"></canvas>
+  <div class="resultado" id="resultado">
+    <div class="player" id="player">
+      <img src="" alt="" id="capa">
+      <div class="player-info">
+        <p id="artista"></p>
+        <p id="nome"></p>
+        <div class="progresso">
+          <span id="tempo-atual">0:00</span>
+          <input type="range" id="barra-progresso" value="0" min="0" max="100">
+          <span id="tempo-total">0:00</span>
         </div>
+      </div>
+      <div class="controles">
+        <button id="play" onclick="togglePlay()">▶</button>
+        <div class="volume">
+          <span>–</span>
+          <input type="range" id="barra-volume" min="0" max="1" step="0.01" value="0.5">
+          <span>+</span>
+        </div>
+      </div>
     </div>
   </div>
+
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
