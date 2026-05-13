@@ -18,6 +18,6 @@ def buscar():
     resultado = buscar_musicas(musica)
     print("iTunes retornou:", resultado)
     nome, capa, preview = resultado[0]
-    return jsonify({'nome': nome, 'capa': capa, 'preview': preview})
+    return jsonify({'nome': nome, 'capa': capa, 'preview': preview, 'nome_ia': musica})
 
 app.run()

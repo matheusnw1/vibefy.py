@@ -38,9 +38,11 @@ function buscar() {
         document.getElementById('resultado').style.display = 'flex';
 
         document.getElementById('capa').src = data.capa;
-        let partes = data.nome.split(' - ');
+
+        let partes = data.nome_ia.split(' - ');
         document.getElementById('artista').textContent = partes[0] || '';
-        document.getElementById('nome').textContent = partes[1] || data.nome;
+        document.getElementById('nome').textContent = partes[1] || data.nome_ia;
+
         audio.src = data.preview;
         audio.volume = barraVolume.value;
         document.getElementById('play').innerText = '▶';
