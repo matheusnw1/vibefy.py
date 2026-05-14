@@ -10,7 +10,7 @@ def inicio():
 
 @app.route('/buscar', methods=['POST'])
 def buscar():
-    dados = request.json
+    dados = request.json 
     humor = dados['humor']
     gostos = dados['gostos']
     musica = interpretar_humor(humor, gostos)
