@@ -51,11 +51,13 @@ function buscar() {
     });
 }
 
+
 function togglePlay() {
     const botao = document.getElementById('play');
     if (audio.paused) {
         audio.play();
         botao.innerText = '⏸';
+        redimensionarCanvas();
         if (!animando) desenharOndas();
     } else {
         audio.pause();
@@ -93,27 +95,28 @@ function redimensionarCanvas() {
     canvas.height = window.innerHeight;
 }
 
-// function desenharOndas() {
-//     animando = true;
-//     const barras = 60;
-//     const larguraBarra = canvas.width / barras;
+function desenharOndas() {
+    console.log('desenhando ondas', canvas.width, canvas.height);
+    animando = true;
+    const barras = 60;
+    const larguraBarra = canvas.width / barras;
 
-//     function frame() {
-//         if (!animando) return;
-//         ctx.clearRect(0, 0, canvas.width, canvas.height);
+    function frame() {
+        if (!animando) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-//         for (let i = 0; i < barras; i++) {
-//             const altura = 20 + Math.random() * (canvas.height * 0.6);
-//             const x = i * larguraBarra;
-//             const y = (canvas.height - altura) / 2;
-//             ctx.fillStyle = 'rgba(26, 58, 107, 0.25)';
-//             ctx.beginPath();
-//             ctx.roundRect(x + 2, y, larguraBarra - 4, altura, 4);
-//             ctx.fill();
-//         }
-//         requestAnimationFrame(frame);
-//     }
-//     frame();
-// }
+        for (let i = 0; i < barras; i++) {
+            const altura = 20 + Math.random() * (canvas.height * 0.6);
+            const x = i * larguraBarra;
+            const y = (canvas.height - altura) / 2;
+            ctx.fillStyle = 'rgba(26, 58, 107, 0.25)';
+            ctx.beginPath();
+            ctx.roundRect(x + 2, y, larguraBarra - 4, altura, 4);
+            ctx.fill();
+        }
+        requestAnimationFrame(frame);
+    }
+    frame();
+}
 
 window.addEventListener('resize', redimensionarCanvas);

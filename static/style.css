@@ -120,7 +120,7 @@ button:hover {
 
 .player {
     position: relative;
-    z-index: 1;
+    z-index: 3;
     background-color: #1a1a1c;
     border-radius: 20px;
     padding: 30px;
@@ -142,11 +142,11 @@ button:hover {
 #resultado {
     display: none;
     position: fixed !important;
-    z-index: 1;
+    z-index: 2;
     top: 0; left: 0;
     width: 100% !important;
     height: 100% !important;
-    background: #0a0a0c;
+    background: transparent;
     justify-content: center;
     align-items: center;
     overflow: hidden;
@@ -248,6 +248,15 @@ button:hover {
     border-radius: 2px;
     background: #1a3a6b;
     animation: onda 1s ease-in-out infinite;
+}
+
+#canvas-ondas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .ondas-loading span:nth-child(1) { height: 16px; animation-delay: 0s; }
